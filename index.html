@@ -13,10 +13,14 @@
 
       <div class="nav-bar"></div>
 
-      <div class="cart">Cart ({{ cart }})</div>
+      <div class="cart">Cart ({{ cart.length }})</div>
 
       <!-- Props: a custom attribute for passing data into a component -->
-      <product-display :premium="premium"></product-display>
+      <product-display 
+        :premium="premium" 
+        @add-to-cart="updateCart"
+        @remove-from-cart="removeProductFromCart"
+      ></product-display>
     </div>
 
     <!-- Import App -->
