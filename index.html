@@ -17,12 +17,20 @@
         <div class="product-container">
           <div class="product-image">
             <!-- v-bind: Dynamically bind an attribute (src) to an expression (image) -->
-            <img v-bind:src="image" v-bind:alt="description">
+            <img v-bind:src="image" v-bind:alt="description" v-bind:title="description">
           </div>
 
           <div class="product-info">
             <h1>{{ product }}</h1>
             <p>{{ description }}</p>
+
+            <!-- We can use v-show that is used for toggling elements' visibility -->
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
+
+            <p v-if="inventory > 10">More than 10 units</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+            <p v-else>No more units</p>
           </div>
         </div>
       </div>
