@@ -19,7 +19,12 @@
         <div class="product-container">
           <div class="product-image">
             <!-- v-bind: Dynamically bind an attribute (src) to an expression (image) -->
-            <img v-bind:src="image" v-bind:alt="description" v-bind:title="description">
+            <img 
+              v-bind:src="image" 
+              v-bind:alt="description" 
+              :title="description"
+              :class="[ !inStock ? 'out-of-stock-img' : '']"
+            >
           </div>
 
           <div class="product-info">
@@ -41,15 +46,29 @@
             </ul>
 
             <!-- Attribute 'key' gives each DOM element a unique key -->
+            <!-- 
+              When style binding we provide an style object, because this
+              style object is javascript we camelCase name's properties,
+              we can also use kebap-case but between quotes i.e. 'background-color'
+            -->
             <div v-for="variant in variants" 
               :key="variant.id"
+              class="color-circle"
+              :style="{
+                backgroundColor: variant.color
+              }"
               @mouseover="updateImage(variant.image)"
-            >
-              {{ variant.color }}
-            </div>
+            ></div>
 
             <!-- Directive v-on gives a listener, in this case a listener for click event -->
-            <button class="button" v-on:click="addToCart">Add to Cart</button>
+            <button 
+              class="button"
+              :class="{ disabledButton: !inStock }"
+              :disabled="!inStock"
+              v-on:click="addToCart"
+            >
+              Add to Cart
+            </button>
 
             <button class="button" @click="remove1FromCart">Remove 1</button>
           </div>
