@@ -31,6 +31,17 @@
             <p v-if="inventory > 10">More than 10 units</p>
             <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
             <p v-else>No more units</p>
+
+            <ul>
+              <li v-for="detail in details">
+                {{ detail }}
+              </li>
+            </ul>
+
+            <!-- Attribute 'key' gives each DOM element a unique key -->
+            <div v-for="variant in variants" :key="variant.id">
+              {{ variant.color }}
+            </div>
           </div>
         </div>
       </div>

@@ -6,6 +6,21 @@ const app = Vue.createApp({
             description: 'Vintage green socks',
             inStock: true,
             inventory: 100,
+            details: [
+                '50% cotton',
+                '30% wool',
+                '20% polyester',
+            ],
+            variants: [
+                {
+                    id: 2234,
+                    color: 'green',
+                },
+                {
+                    id: 2235,
+                    color: 'blue',
+                },
+            ]
         }
     }
 });
